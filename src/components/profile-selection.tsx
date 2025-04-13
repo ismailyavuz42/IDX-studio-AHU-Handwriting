@@ -11,7 +11,7 @@ export function ProfileSelection() {
   useEffect(() => {
     const fetchFonts = async () => {
       // In a real-world scenario, you might fetch this list from an API or a more robust file system scan
-      const fonts = ['Font-One', 'Font-Two', 'Font-Three'];
+      const fonts = ['Amperzand', 'Font-Two', 'Font-Three'];
       setAvailableFonts(fonts);
     };
 
@@ -20,9 +20,9 @@ export function ProfileSelection() {
 
   // Replace with actual profile data from API or database
   const profiles = [
-    {id: '1', name: 'Profile 1'},
-    {id: '2', name: 'Profile 2'},
-    {id: '3', name: 'Profile 3'},
+    {id: 'Amperzand', name: 'Amperzand'},
+    {id: 'Font-Two', name: 'Font-Two'},
+    {id: 'Font-Three', name: 'Font-Three'},
   ];
 
   return (
@@ -67,7 +67,21 @@ export function ProfileSelection() {
           ))}
         </SelectContent>
       </Select>
-      {selectedProfile && <div className="mt-2">Selected profile: {selectedProfile}</div>}
+      {selectedProfile && (
+        <div className="mt-2">
+          Selected profile: {selectedProfile}
+          {selectedProfile && (
+            <div className="mt-2">
+              <img
+                src={`/fonts/${selectedProfile}.png`} // Assuming profile images are named like Profile-One.png
+                alt={`Preview of ${selectedProfile}`}
+                className="mt-2 rounded-md shadow-sm"
+                style={{maxWidth: '100px', maxHeight: '100px'}}
+              />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

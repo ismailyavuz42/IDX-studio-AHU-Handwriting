@@ -6,7 +6,6 @@ import {Input} from '@/components/ui/input';
 
 export function ProfileCreation() {
   const [handwritingSamples, setHandwritingSamples] = useState<File[]>([]);
-  const [handwritingFonts, setHandwritingFonts] = useState<File[]>([]);
   const [profileName, setProfileName] = useState<string>('');
 
   const handleSampleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,18 +14,11 @@ export function ProfileCreation() {
     }
   };
 
-  const handleFontChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setHandwritingFonts([...handwritingFonts, ...Array.from(event.target.files)]);
-    }
-  };
-
   const handleCreateProfile = () => {
     // Handle profile creation logic here, including API calls, etc.
     console.log('Creating profile with:', {
       profileName,
       handwritingSamples,
-      handwritingFonts,
     });
   };
 
@@ -65,26 +57,8 @@ export function ProfileCreation() {
         </ul>
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="handwritingFonts" className="block text-sm font-medium text-gray-700">
-          Handwriting Fonts
-        </label>
-        <Input
-          type="file"
-          id="handwritingFonts"
-          multiple
-          accept=".ttf,.otf"
-          className="mt-1"
-          onChange={handleFontChange}
-        />
-        <ul className="mt-2 list-disc pl-5">
-          {handwritingFonts.map((font, index) => (
-            <li key={index}>{font.name}</li>
-          ))}
-        </ul>
-      </div>
-
       <Button onClick={handleCreateProfile}>Create Profile</Button>
     </div>
   );
 }
+

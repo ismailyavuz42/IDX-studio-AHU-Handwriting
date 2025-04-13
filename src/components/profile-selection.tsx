@@ -11,7 +11,7 @@ export function ProfileSelection() {
   useEffect(() => {
     const fetchFonts = async () => {
       // In a real-world scenario, you might fetch this list from an API or a more robust file system scan
-      const fonts = ['Amperzand', 'Font-Two', 'Font-Three'];
+      const fonts = ['Amperzand', 'NewBerolineMT', 'cygnetrount'];
       setAvailableFonts(fonts);
     };
 
@@ -21,8 +21,8 @@ export function ProfileSelection() {
   // Replace with actual profile data from API or database
   const profiles = [
     {id: 'Amperzand', name: 'Amperzand'},
-    {id: 'Font-Two', name: 'Font-Two'},
-    {id: 'Font-Three', name: 'Font-Three'},
+    {id: 'NewBerolineMT', name: 'NewBerolineMT'},
+    {id: 'cygnetrount', name: 'cygnetrount'},
   ];
 
   return (

@@ -6,8 +6,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 export function ProfileSelection() {
   const [selectedProfile, setSelectedProfile] = useState<string>('');
   const [availableFonts, setAvailableFonts] = useState<string[]>([]);
-    const [selectedFont, setSelectedFont] = useState<string>('');
-
+  const [selectedFont, setSelectedFont] = useState<string>('');
 
   useEffect(() => {
     const fetchFonts = async () => {
@@ -28,7 +27,7 @@ export function ProfileSelection() {
 
   return (
     <div>
-          <div className="mb-4">
+      <div className="mb-4">
         <label htmlFor="handwritingFonts" className="block text-sm font-medium text-gray-700">
           Handwriting Fonts
         </label>
@@ -44,7 +43,17 @@ export function ProfileSelection() {
             ))}
           </SelectContent>
         </Select>
-        {selectedFont && <div className="mt-2">Selected font: {selectedFont}</div>}
+        {selectedFont && (
+          <div className="mt-2">
+            Selected font: {selectedFont}
+            <img
+              src={`/fonts/${selectedFont}.png`} // Assuming font images are named like Font-One.png
+              alt={`Preview of ${selectedFont}`}
+              className="mt-2 rounded-md shadow-sm"
+              style={{maxWidth: '100px', maxHeight: '100px'}}
+            />
+          </div>
+        )}
       </div>
       <Select value={selectedProfile} onValueChange={setSelectedProfile}>
         <SelectTrigger className="w-[180px]">
@@ -62,4 +71,3 @@ export function ProfileSelection() {
     </div>
   );
 }
-
